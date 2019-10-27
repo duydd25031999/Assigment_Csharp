@@ -15,6 +15,7 @@ Có 5 Task :
   - Sử lý….
 4. Database + DAO : Trong backend
   - Tạo database như bản vẽ
+  - Tạo class DAO
 5. Load data to database :
   - Do data tải về lưu ở file .txt nên cần có 1 console app để đọc file data và lưu vào database
   - Có thể nhập tay nhưng có tận > 100k từ

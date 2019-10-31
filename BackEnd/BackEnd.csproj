@@ -53,14 +53,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DemoService.asmx" />
+    <Content Include="Service\DemoService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoService.asmx.cs">
+    <Compile Include="Entity\Dictionary.cs" />
+    <Compile Include="Entity\Term.cs" />
+    <Compile Include="Service\DemoService.asmx.cs">
       <DependentUpon>DemoService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Entity\Definition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

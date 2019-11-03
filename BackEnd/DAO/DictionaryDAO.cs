@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using BackEnd.Entity;
+using System.Web.Configuration;
+using Entity;
 namespace BackEnd.DAO
 {
     public class DictionaryDAO
     {
-        string conn = ConfigurationManager.ConnectionStrings["connectionString"].ToString();
-        Definition dr = new Definition();
-        public void dic(int dicID, string search)
+        string conn = WebConfigurationManager.ConnectionStrings["myConnectionString"].ToString();
+        
+        public List<Definition> getListDefByString(int dicID, string search)
         {
             //dicID is dictionaryID which gotten by droplist in search
             List<Definition> list = new List<Definition>();
@@ -27,8 +24,8 @@ namespace BackEnd.DAO
                 Definition def = new Definition();
                 def.Content= (string)dr["content"];
                 list.Add(def);
-
             }
+            return list;
         }
 
     }

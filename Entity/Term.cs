@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Collections;
+using System.Text;
 
-namespace BackEnd.Entity
+namespace Entity
 {
     public class Term
     {
@@ -12,27 +11,28 @@ namespace BackEnd.Entity
         int _dictionaryId;
         string _content;
         List<Definition> _listDef;
-        Term() {
+        public Term()
+        {
             _listDef = new List<Definition>();
         }
-        Term(int id, int dictionaryId, string content)
+        public Term(int id, int dictionaryId, string content)
         {
             this._id = id;
             this._dictionaryId = dictionaryId;
             this._content = content;
-            
+
         }
-        int ID
+        public int ID
         {
             get { return _id; }
             set { _id = value; }
         }
-        int DictionaryID
+        public int DictionaryID
         {
             get { return _dictionaryId; }
             set { _dictionaryId = value; }
         }
-        string Content
+        public string Content
         {
             get { return _content; }
             set { _content = value; }

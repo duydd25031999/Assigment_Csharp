@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace BackEnd.Entity
+namespace Entity
 {
     public class Definition
     {
@@ -13,8 +13,8 @@ namespace BackEnd.Entity
         string _content;
         int _termId;
 
-        Definition() { }
-        Definition(int id, int index, string content, int typeCode, int termId)
+        public Definition() { }
+        public Definition(int id, int index, string content, int typeCode, int termId)
         {
             this._id = id;
             this._index = index;
@@ -23,10 +23,11 @@ namespace BackEnd.Entity
             this._termId = termId;
         }
 
-        string Type
+        public string Type
         {
-            get {
-                switch(_typeCode)
+            get
+            {
+                switch (_typeCode)
                 {
                     case 1:
                         return "header";
@@ -42,31 +43,31 @@ namespace BackEnd.Entity
             set { }
         }
 
-        int ID
+        public int ID
         {
-            get { return _id;  }
-            set { _id = value;  }
+            get { return _id; }
+            set { _id = value; }
         }
 
-        int Index
+        public int Index
         {
-            get { return _index;  }
+            get { return _index; }
             set { _index = value; }
         }
 
-        string Content
+        public string Content
         {
             get { return _content; }
             set { _content = value; }
         }
 
-        int TypeCode
+        public int TypeCode
         {
             get { return _typeCode; }
             set { _typeCode = value; }
         }
 
-        int TermID
+        public int TermID
         {
             get { return _termId; }
             set { _termId = value; }

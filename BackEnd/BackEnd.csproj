@@ -53,18 +53,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service\DemoService.asmx" />
+    <Content Include="Service\SearchService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Dictionary.cs" />
-    <Compile Include="Entity\Term.cs" />
-    <Compile Include="Service\DemoService.asmx.cs">
-      <DependentUpon>DemoService.asmx</DependentUpon>
+    <Compile Include="DAO\DictionaryDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\SearchService.asmx.cs">
+      <DependentUpon>SearchService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Entity\Definition.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -75,7 +73,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAO\" />
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{cc5a67e8-1e99-45ed-8be2-8c8ac9617955}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

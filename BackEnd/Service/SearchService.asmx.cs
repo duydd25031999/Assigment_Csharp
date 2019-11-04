@@ -26,8 +26,26 @@ namespace BackEnd.Service
         public List<Definition> getListDefByString(int dicID, string search)
         {
             List<Definition> list = dictionaryDAO.getListDefByString(dicID, search);
-            int a = 0;
             return list;
+        }
+
+        [WebMethod]
+        public List<Term> getListSuggestByString(int dicID, string search)
+        {
+            /*
+             * When user is typing
+             * Get list term that term's content contains user's typing
+             */
+            return null;
+        }
+        [WebMethod]
+        public List<Definition> getListDefByTerm(Term term)
+        {
+            /*
+             * When user choice a term in suggest
+             * Get list definitions of this term
+             */
+            return null;
         }
     }
 }

@@ -30,12 +30,14 @@ namespace Entity
                 switch (_typeCode)
                 {
                     case 1:
-                        return "header";
+                        return "word-class";
                     case 2:
-                        return "kind";
+                        return "meaning";
                     case 3:
-                        return "example";
+                        return "header";
                     case 4:
+                        return "example";
+                    case 5:
                         return "explain";
                 };
                 return "other";

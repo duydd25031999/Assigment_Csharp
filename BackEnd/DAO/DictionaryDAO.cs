@@ -30,6 +30,7 @@ namespace BackEnd.DAO
                 def.Content = (string)dr["content"];
                 list.Add(def);
             }
+            contr.Close();
             return list;
         }
 
@@ -50,8 +51,54 @@ namespace BackEnd.DAO
                 dic.Name = (string)dr["name"];
                 list.Add(dic);
             }
+            contr.Close();
             return list;
         }
-        
+
+        public List<Term> getTop5TermByString(int dicID, string search)
+        {
+            //get top 5 term contains user input
+            List<Term> list = new List<Term>();
+            string sql = "select top (5) * from term where content like N'" + search + "%' and dictionaryid = " + dicID;
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(sql, contr);
+            contr.Open();
+            //Read data form SQL and add to list
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                Term term = new Term();
+                term.ID = (int)dr["id"];
+                term.Content = (string)dr["content"];
+                term.DictionaryID = (int)dr["dictionaryid"];
+                list.Add(term);
+            }
+            contr.Close();
+            return list;
+        }
+
+        public List<Definition> getDefinitionByTerm(Term term)
+        {
+            List<Definition> list = new List<Definition>();
+            string sql = "select * from def where termid = " + term.ID;
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(sql, contr);
+            contr.Open();
+            //Read data form SQL and add to list
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                // index, id, term type
+                Definition def = new Definition();
+                def.ID = (int)dr["id"];
+                def.Index = (int)dr["index"];
+                def.TermID = (int)dr["termid"];
+                def.TypeCode = (int)dr["type"];
+                def.Content = (string)dr["content"];
+                list.Add(def);
+            }
+            contr.Close();
+            return list;
+        }
     }
 }

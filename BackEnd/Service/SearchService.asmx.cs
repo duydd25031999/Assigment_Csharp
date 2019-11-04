@@ -35,9 +35,10 @@ namespace BackEnd.Service
         {
             /*
              * When user is typing
-             * Get list term that term's content contains user's typing
+             * Get list top 5 terms that term's content contains user's typing
              */
-            return null;
+            List<Term> list = dictionaryDAO.getTop5TermByString(dicID, search);
+            return list;
         }
         [WebMethod]
         public List<Definition> getListDefByTerm(Term term)
@@ -46,7 +47,8 @@ namespace BackEnd.Service
              * When user choice a term in suggest
              * Get list definitions of this term
              */
-            return null;
+            List<Definition> list = dictionaryDAO.getDefinitionByTerm(term);
+            return list;
         }
 
         string processSearchInput(string input)

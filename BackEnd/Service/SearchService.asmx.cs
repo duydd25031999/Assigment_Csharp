@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Services;
 using Entity;
+using System.Text;
 
 namespace BackEnd.Service
 {
@@ -25,7 +26,7 @@ namespace BackEnd.Service
         [WebMethod]
         public List<Definition> getListDefByString(int dicID, string search)
         {
-            List<Definition> list = dictionaryDAO.getListDefByString(dicID, search);
+            List<Definition> list = dictionaryDAO.getListDefByString(dicID, processSearchInput(search));
             return list;
         }
 
@@ -46,6 +47,11 @@ namespace BackEnd.Service
              * Get list definitions of this term
              */
             return null;
+        }
+
+        string processSearchInput(string input)
+        {  
+            return input.Trim().ToLower();
         }
     }
 }

@@ -22,15 +22,5 @@ namespace FrontEnd.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/DemoService.asmx")]
-        public string FrontEnd_Backend_DemoService {
-            get {
-                return ((string)(this["FrontEnd_Backend_DemoService"]));
-            }
-        }
     }
 }

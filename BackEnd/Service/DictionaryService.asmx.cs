@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using Entity;
+using BackEnd.DAO;
 
 namespace BackEnd.Service
 {
@@ -17,7 +18,7 @@ namespace BackEnd.Service
     // [System.Web.Script.Services.ScriptService]
     public class DictionaryService : System.Web.Services.WebService
     {
-
+        DictionaryDAO dictionaryDAO = new DictionaryDAO();
         [WebMethod]
         public string HelloWorld()
         {
@@ -27,7 +28,8 @@ namespace BackEnd.Service
         [WebMethod]
         public List<Dictionary> getAllDictionary()
         {
-            return null;
+            List<Dictionary> list = dictionaryDAO.getAllDictionary();
+            return list;
         }
     }
 }

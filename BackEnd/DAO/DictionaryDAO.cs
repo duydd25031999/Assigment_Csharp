@@ -30,9 +30,10 @@ namespace BackEnd.DAO
                 def.Content = (string)dr["content"];
                 list.Add(def);
             }
+            return list;
         }
 
-        public void dicDAO()
+        public List<Dictionary> getAllDictionary()
         {
             //GET ALL DICTIONARY
             List<Dictionary> list = new List<Dictionary>();
@@ -45,10 +46,11 @@ namespace BackEnd.DAO
             while (dr.Read())
             {
                 Dictionary dic = new Dictionary();
-                dic._id = (int)dr["id"];
-                dic._name = (string)dr["name"];
+                dic.ID = (int)dr["id"];
+                dic.Name = (string)dr["name"];
                 list.Add(dic);
             }
+            return list;
         }
         
     }

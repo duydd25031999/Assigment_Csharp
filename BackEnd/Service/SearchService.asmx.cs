@@ -51,6 +51,12 @@ namespace BackEnd.Service
             return list;
         }
 
+        [WebMethod]
+        public void setNoteToTerm(string note)
+        {
+
+        }
+
         string processSearchInput(string input)
         {  
             return input.Trim().ToLower();

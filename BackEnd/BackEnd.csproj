@@ -55,6 +55,7 @@
   <ItemGroup>
     <Content Include="Service\DictionaryService.asmx" />
     <Content Include="Service\SearchService.asmx" />
+    <Content Include="Service\UserService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,10 @@
     </Compile>
     <Compile Include="Service\SearchService.asmx.cs">
       <DependentUpon>SearchService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service\UserService.asmx.cs">
+      <DependentUpon>UserService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

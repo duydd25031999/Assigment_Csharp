@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DictionaryDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DictionaryService.asmx.cs">
       <DependentUpon>DictionaryService.asmx</DependentUpon>

@@ -11,7 +11,7 @@ namespace BackEnd.DAO
         public User login(string username, string password)
         {
             User u = null;
-            string sql = "select * from [user] where cast(" + username + " as nvarchar) = N'user1' and cast([" + password + "] as nvarchar) = N'123'";
+            string sql = "select * from [user] where [username] like N'" + username + "' and [password] like N'" + password + "'";
             SqlConnection contr = new SqlConnection(conn);
             SqlCommand da = new SqlCommand(sql, contr);
             contr.Open();
@@ -19,23 +19,25 @@ namespace BackEnd.DAO
             SqlDataReader dr = da.ExecuteReader();
             while (dr.Read())
             {
-                /*To Do
-                 * fill data in db into correct field in entity
-                 */
                 u = new User();
-                u.ID = 0;
-                u.Username = (string)dr["username"];
-                u.Password = (string)dr["password"];
-                u.Email = null;
-                u.DateOfBirth = new DateTime();
+                u.ID = (int) dr["id"];
+                u.Username = (string) dr["username"];
+                u.Password = (string) dr["password"];
+                u.Email = (string) dr["email"];
+                object tmp = dr["dob"];
+                DateTime date = (DateTime)Convert.ToDateTime(tmp);
+                u.DateOfBirth = date;
             }
             contr.Close();
             return u;
         }
-        public void createUser(User newUser)
+        public void createUser(string username, string password, string email, DateTime dob)
         {
+            string format = "yyyy-MM-dd HH:mm:ss";
+            string date = dob.ToString(format);
+            string query = "INSERT INTO [user] (username, password, email, dob) VALUES (N'" + username + "', '" + password + "', '" + email + "', '" + date + "')";
             SqlConnection contr = new SqlConnection(conn);
-            SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[user] (username, password, email, dob) VALUES (" +  newUser.Username + "', '" + newUser.Password + "', '" + newUser.Email + "', '" + newUser.DateOfBirth.ToString() + "')");
+            SqlCommand cmd = new SqlCommand(query, contr);
             contr.Open();
             cmd.ExecuteNonQuery();
             contr.Close();
@@ -43,12 +45,26 @@ namespace BackEnd.DAO
 
         public User getUserByUsername(string username)
         {
-            /*To Do
-                * get user by user name
-                * to support login check password
-                * to signup check existed user
-            */
-            return null;
+            User u = null;
+            string sql = "select * from [user] where [username] like N'" + username + "'";
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(sql, contr);
+            contr.Open();
+            //Read data form SQL and add to list
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                u = new User();
+                u.ID = (int)dr["id"];
+                u.Username = (string)dr["username"];
+                u.Password = (string)dr["password"];
+                u.Email = (string)dr["email"];
+                object tmp = dr["dob"];
+                DateTime date = (DateTime) Convert.ToDateTime(tmp);
+                u.DateOfBirth = date;
+            }
+            contr.Close();
+            return u;
         }
     }
 }

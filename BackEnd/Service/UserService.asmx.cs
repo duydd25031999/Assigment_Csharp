@@ -34,14 +34,8 @@ namespace BackEnd.Service
         [WebMethod]
         public bool signup(string username, string password, string email, string dob)
         {
-            User newUser = new User();
-            newUser.Username = username;
-            newUser.Password = password;
-            newUser.Email = email;
             DateTime date = Convert.ToDateTime(dob);
-            newUser.DateOfBirth = date;
-
-            dao.createUser(newUser);
+            dao.createUser(username, password, email, date);
 
             return true;
         }

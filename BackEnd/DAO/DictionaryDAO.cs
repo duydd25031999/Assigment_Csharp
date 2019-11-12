@@ -100,38 +100,5 @@ namespace BackEnd.DAO
             contr.Close();
             return list;
         }
-        
-        public List<User> userLogin(string username, string password)
-        {
-            List<User> list = new List<User>();
-            string sql = "SELECT u.username, u.password FROM[dbo].[user] u WHERE u.username LIKE '" + username + "' AND u.password LIKE '" + password + "'";
-            SqlConnection contr = new SqlConnection(conn);
-            SqlCommand da = new SqlCommand(sql, contr);
-            contr.Open();
-            //Read data form SQL and add to list
-            SqlDataReader dr = da.ExecuteReader();
-            while (dr.Read())
-            {
-                // index, id, term type
-                User user = new User();
-                user.Username = (string)dr["username"];
-                user.Password = (string)dr["password"];
-                list.Add(user);
-            }
-            return list;
-        }
-
-        public List<User> userSignIn(int id, string username, string password, string email, string dob)
-        {
-            SqlConnection contr = new SqlConnection(conn);
-            SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[user] (id, username, password, email, dob) VALUES (" + id + ", '" + username + "', '" + password + "', '" + email + "', '" + dob + "')");
-            contr.Open();
-            cmd.ExecuteNonQuery();
-            contr.Close();
-            return null;
-        }
-        
-        
-        
     }
 }

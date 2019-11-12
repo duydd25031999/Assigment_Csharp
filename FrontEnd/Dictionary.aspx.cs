@@ -24,7 +24,7 @@ namespace FrontEnd
             
             int kindOfDictionary = Int32.Parse(kindOfDic.Value);
 
-            
+          
             SearchWebService.Definition[] defs = ss.getListDefByString(kindOfDictionary, input);
             var html = "";
             html += "<table>";

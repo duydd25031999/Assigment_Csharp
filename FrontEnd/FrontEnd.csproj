@@ -109,6 +109,12 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{cc5a67e8-1e99-45ed-8be2-8c8ac9617955}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WebReferenceUrl Include="http://localhost:59691/Service/SearchService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\SearchWebService\</RelPath>

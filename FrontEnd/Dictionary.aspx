@@ -138,6 +138,7 @@
             <h3 id="kindOfDictionary">Từ điển Anh - Việt</h3>
             <span id="volumnUp"><i class="fa fa-volume-up"></i></span>
             <hr />
+            <%--
             <table>
                 <tr>
                     <td style="color: gray;">[ɪkˈspɪə.ri.əns]</td>
@@ -173,8 +174,10 @@
                     <td style="color: gray;">&emsp;&emsp;do kinh nghiệm mà biết được điều gì</td>
                 </tr>
             </table>
+            --%>
+            <div id="demo" runat="server"></div>
         </div>
-        <div id="demo" runat="server"></div>
+        <%--<div id="demo" runat="server"></div>--%>
     </div>
     <script>
         window.onload = changeDictionary();

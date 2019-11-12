@@ -92,7 +92,29 @@
             color: gray;
         }
 
+        .header {
+            color: gray;
+        }
 
+        .word-class {
+            color: blue;
+        }
+
+        .meaning {
+            color: blue;
+        }
+
+        .example {
+            color: green;
+        }
+
+        .explain {
+            color: gray;
+        }
+
+        .other {
+
+        }
     </style>
 </head>
 <body>
@@ -103,9 +125,9 @@
         <form id="searchForm" runat="server">
             <input type="text" name="keyWord" id="keyword" runat="server" placeholder="Tìm kiếm từ khóa..."/>
             <div id="selection">
-                <select>
-                    <option>Anh - Việt</option>
-                    <option>Việt - Anh</option>
+                <select id="kindOfDic" runat="server" onchange="changeDictionary()">
+                    <option value="1">Anh - Việt</option>
+                    <option value="2">Việt - Anh</option>
                 </select>
                 <%--<asp:Button ID="btSearch" class="searchButton" runat="server" OnClick="Search" Text="Search" />--%>
                 <button class="searchButton" onserverclick="Search" runat="server"><i class="fa fa-search"></i></button>
@@ -154,5 +176,17 @@
         </div>
         <div id="demo" runat="server"></div>
     </div>
+    <script>
+        window.onload = changeDictionary();
+
+        function changeDictionary() {
+            var val = document.getElementById('kindOfDic').value;
+            if (val === "1") {
+                document.getElementById('kindOfDictionary').innerText = "Từ điển Anh - Việt";
+            } else {
+                document.getElementById('kindOfDictionary').innerText = "Từ điển Việt - Anh";
+            }
+        }
+    </script>
 </body>
 </html>

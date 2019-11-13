@@ -37,6 +37,8 @@ namespace FrontEnd.SearchWebService {
         
         private System.Threading.SendOrPostCallback getListDefByTermOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTermByStringOperationCompleted;
+        
         private System.Threading.SendOrPostCallback setNoteToTermOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -88,6 +90,9 @@ namespace FrontEnd.SearchWebService {
         
         /// <remarks/>
         public event getListDefByTermCompletedEventHandler getListDefByTermCompleted;
+        
+        /// <remarks/>
+        public event getTermByStringCompletedEventHandler getTermByStringCompleted;
         
         /// <remarks/>
         public event setNoteToTermCompletedEventHandler setNoteToTermCompleted;
@@ -207,6 +212,37 @@ namespace FrontEnd.SearchWebService {
             if ((this.getListDefByTermCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getListDefByTermCompleted(this, new getListDefByTermCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTermByString", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Term getTermByString(int dicID, string search) {
+            object[] results = this.Invoke("getTermByString", new object[] {
+                        dicID,
+                        search});
+            return ((Term)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTermByStringAsync(int dicID, string search) {
+            this.getTermByStringAsync(dicID, search, null);
+        }
+        
+        /// <remarks/>
+        public void getTermByStringAsync(int dicID, string search, object userState) {
+            if ((this.getTermByStringOperationCompleted == null)) {
+                this.getTermByStringOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTermByStringOperationCompleted);
+            }
+            this.InvokeAsync("getTermByString", new object[] {
+                        dicID,
+                        search}, this.getTermByStringOperationCompleted, userState);
+        }
+        
+        private void OngetTermByStringOperationCompleted(object arg) {
+            if ((this.getTermByStringCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTermByStringCompleted(this, new getTermByStringCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -352,6 +388,10 @@ namespace FrontEnd.SearchWebService {
         
         private string contentField;
         
+        private string noteField;
+        
+        private Definition[] definitionsField;
+        
         /// <remarks/>
         public int ID {
             get {
@@ -379,6 +419,26 @@ namespace FrontEnd.SearchWebService {
             }
             set {
                 this.contentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Note {
+            get {
+                return this.noteField;
+            }
+            set {
+                this.noteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Definition[] Definitions {
+            get {
+                return this.definitionsField;
+            }
+            set {
+                this.definitionsField = value;
             }
         }
     }
@@ -483,6 +543,32 @@ namespace FrontEnd.SearchWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Definition[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    public delegate void getTermByStringCompletedEventHandler(object sender, getTermByStringCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTermByStringCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTermByStringCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Term Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Term)(this.results[0]));
             }
         }
     }

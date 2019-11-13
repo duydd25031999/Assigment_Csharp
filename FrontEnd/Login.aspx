@@ -1,8 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Login_Form.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="FrontEnd.Login" %>
 
 <!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login Form</title>
+<title>Login Form</title>
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -14,11 +16,11 @@
 			</div>
 			<label for="username">Username</label>
 			<br/>
-			<input type="text" id="username" required="">
+			<input type="text" id="username" required=""/>
 			<br/>
 			<label for="password">Password</label>
 			<br/>
-			<input type="password" id="password" required="">
+			<input type="password" id="password" required=""/>
 			<a href="#"><p class="small">Forgot your password?</p></a>
 			<br/>
 			<button type="submit">Sign In</button>

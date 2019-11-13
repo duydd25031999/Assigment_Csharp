@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Signup_Form
+namespace FrontEnd
 {
 
 
-    public partial class Sign_Up
+    public partial class Login
     {
 
         /// <summary>

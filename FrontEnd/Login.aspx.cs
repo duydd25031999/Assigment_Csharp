@@ -4,11 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 
-namespace Login_Form
+namespace FrontEnd
 {
     public partial class Login : System.Web.UI.Page
     {

@@ -39,7 +39,9 @@ namespace FrontEnd.SearchWebService {
         
         private System.Threading.SendOrPostCallback getTermByStringOperationCompleted;
         
-        private System.Threading.SendOrPostCallback setNoteToTermOperationCompleted;
+        private System.Threading.SendOrPostCallback getTermByStringWithUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getTermByIdWithUserOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -95,7 +97,10 @@ namespace FrontEnd.SearchWebService {
         public event getTermByStringCompletedEventHandler getTermByStringCompleted;
         
         /// <remarks/>
-        public event setNoteToTermCompletedEventHandler setNoteToTermCompleted;
+        public event getTermByStringWithUserCompletedEventHandler getTermByStringWithUserCompleted;
+        
+        /// <remarks/>
+        public event getTermByIdWithUserCompletedEventHandler getTermByIdWithUserCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -247,30 +252,66 @@ namespace FrontEnd.SearchWebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/setNoteToTerm", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void setNoteToTerm(string note) {
-            this.Invoke("setNoteToTerm", new object[] {
-                        note});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTermByStringWithUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Term getTermByStringWithUser(int dicID, string search, int userid) {
+            object[] results = this.Invoke("getTermByStringWithUser", new object[] {
+                        dicID,
+                        search,
+                        userid});
+            return ((Term)(results[0]));
         }
         
         /// <remarks/>
-        public void setNoteToTermAsync(string note) {
-            this.setNoteToTermAsync(note, null);
+        public void getTermByStringWithUserAsync(int dicID, string search, int userid) {
+            this.getTermByStringWithUserAsync(dicID, search, userid, null);
         }
         
         /// <remarks/>
-        public void setNoteToTermAsync(string note, object userState) {
-            if ((this.setNoteToTermOperationCompleted == null)) {
-                this.setNoteToTermOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetNoteToTermOperationCompleted);
+        public void getTermByStringWithUserAsync(int dicID, string search, int userid, object userState) {
+            if ((this.getTermByStringWithUserOperationCompleted == null)) {
+                this.getTermByStringWithUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTermByStringWithUserOperationCompleted);
             }
-            this.InvokeAsync("setNoteToTerm", new object[] {
-                        note}, this.setNoteToTermOperationCompleted, userState);
+            this.InvokeAsync("getTermByStringWithUser", new object[] {
+                        dicID,
+                        search,
+                        userid}, this.getTermByStringWithUserOperationCompleted, userState);
         }
         
-        private void OnsetNoteToTermOperationCompleted(object arg) {
-            if ((this.setNoteToTermCompleted != null)) {
+        private void OngetTermByStringWithUserOperationCompleted(object arg) {
+            if ((this.getTermByStringWithUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.setNoteToTermCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getTermByStringWithUserCompleted(this, new getTermByStringWithUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTermByIdWithUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Term getTermByIdWithUser(int termid, int userid) {
+            object[] results = this.Invoke("getTermByIdWithUser", new object[] {
+                        termid,
+                        userid});
+            return ((Term)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTermByIdWithUserAsync(int termid, int userid) {
+            this.getTermByIdWithUserAsync(termid, userid, null);
+        }
+        
+        /// <remarks/>
+        public void getTermByIdWithUserAsync(int termid, int userid, object userState) {
+            if ((this.getTermByIdWithUserOperationCompleted == null)) {
+                this.getTermByIdWithUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTermByIdWithUserOperationCompleted);
+            }
+            this.InvokeAsync("getTermByIdWithUser", new object[] {
+                        termid,
+                        userid}, this.getTermByIdWithUserOperationCompleted, userState);
+        }
+        
+        private void OngetTermByIdWithUserOperationCompleted(object arg) {
+            if ((this.getTermByIdWithUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTermByIdWithUserCompleted(this, new getTermByIdWithUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -575,7 +616,55 @@ namespace FrontEnd.SearchWebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void setNoteToTermCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void getTermByStringWithUserCompletedEventHandler(object sender, getTermByStringWithUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTermByStringWithUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTermByStringWithUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Term Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Term)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    public delegate void getTermByIdWithUserCompletedEventHandler(object sender, getTermByIdWithUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTermByIdWithUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTermByIdWithUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Term Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Term)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

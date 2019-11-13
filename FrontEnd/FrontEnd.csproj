@@ -64,6 +64,13 @@
     <Content Include="images\photo_bg2.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Signup.aspx" />
+    <None Include="Web References\NoteWebService\NoteService.disco" />
+    <Content Include="TermEdit.aspx" />
+    <None Include="Web References\NoteWebService\NoteService.wsdl" />
+    <Content Include="Web References\NoteWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Web References\SearchWebService\Definition.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -77,6 +84,10 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Web References\UserWebService\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\SearchWebService\SearchService.wsdl" />
+    <Content Include="Web References\SearchWebService\Term.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\UserWebService\UserService.disco" />
@@ -111,6 +122,18 @@
     <Compile Include="Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TermEdit.aspx.cs">
+      <DependentUpon>TermEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermEdit.aspx.designer.cs">
+      <DependentUpon>TermEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\NoteWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\SearchWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,10 +146,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\SearchWebService\SearchService.wsdl" />
-    <Content Include="Web References\SearchWebService\Term.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\UserWebService\UserService.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -148,6 +167,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:59691/Service/NoteService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NoteWebService\</RelPath>
+      <UpdateFromURL>http://localhost:59691/Service/NoteService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FrontEnd_NoteWebService_NoteService</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:59691/Service/SearchService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\SearchWebService\</RelPath>

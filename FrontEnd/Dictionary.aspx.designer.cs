@@ -58,6 +58,33 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlSelect kindOfDic;
         
         /// <summary>
+        /// divNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNote;
+        
+        /// <summary>
+        /// btnNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnNote;
+        
+        /// <summary>
+        /// lblNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNote;
+        
+        /// <summary>
         /// demo control.
         /// </summary>
         /// <remarks>

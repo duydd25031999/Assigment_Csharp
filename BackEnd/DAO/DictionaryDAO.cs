@@ -106,7 +106,7 @@ namespace BackEnd.DAO
         {
             //get top 5 term contains user input
             Term term = new Term();
-            string sql = "select top (5) * from term where content like N'" + search + "' and dictionaryid = " + dicID;
+            string sql = "select * from term where content like N'" + search + "' and dictionaryid = " + dicID;
             SqlConnection contr = new SqlConnection(conn);
             SqlCommand da = new SqlCommand(sql, contr);
             contr.Open();
@@ -120,6 +120,30 @@ namespace BackEnd.DAO
             }
             contr.Close();
             if(term.ID != -1)
+            {
+                getDefinitionByTerm(term);
+            }
+            return term;
+        }
+
+        public Term getTermById(int termid)
+        {
+            //get top 5 term contains user input
+            Term term = new Term();
+            string sql = "select * from term where id = " + termid;
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(sql, contr);
+            contr.Open();
+            //Read data form SQL and add to list
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                term.ID = (int)dr["id"];
+                term.Content = (string)dr["content"];
+                term.DictionaryID = (int)dr["dictionaryid"];
+            }
+            contr.Close();
+            if (term.ID != -1)
             {
                 getDefinitionByTerm(term);
             }

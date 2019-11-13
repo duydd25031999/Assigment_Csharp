@@ -67,6 +67,14 @@ namespace BackEnd.Service
             return term;
         }
 
+        [WebMethod]
+        public Term getTermByIdWithUser(int termid, int userid)
+        {
+            Term term = dictionaryDAO.getTermById(termid);
+            noteDAO.getNoteByTerm(term, userid);
+            return term;
+        }
+
         string processSearchInput(string input)
         {  
             return input.Trim().ToLower();

@@ -171,6 +171,30 @@
             font-size: 30px;
             line-height: 60px;
         }
+
+        .div-note {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+        .div-note-btn {
+            width: 35px;
+        }
+        .note-content {
+            border : 1px solid gray;
+            border-radius: 10px;
+            line-height: 20px;
+            padding: 5px;
+            margin-left: 10px;
+            width: 100%;
+        }
+        #txtNote {
+            outline: none;
+            height: 80px;
+            font-family: sans-serif;
+            font-size: 16px;
+            resize: vertical;
+        }
     </style>
 </head>
 <body>
@@ -203,43 +227,15 @@
             <h3 id="kindOfDictionary">Từ điển Anh - Việt</h3>
             <span id="volumnUp"><i class="fa fa-volume-up"></i></span>
             <hr />
-            <%--
-            <table>
-                <tr>
-                    <td style="color: gray;">[ɪkˈspɪə.ri.əns]</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">* danh từ</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">&emsp;kinh nghiệm</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">&emsp;&emsp;- to lack experience</td>
-                </tr>
-                <tr>
-                    <td style="color: gray;">&emsp;&emsp;thiếu kinh nghiệm</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">&emsp;&emsp;- to learn by experience</td>
-                </tr>
-                <tr>
-                    <td style="color: gray;">&emsp;&emsp;học hỏi qua kinh nghiệm</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">&emsp;&emsp;- to have much experience of teaching</td>
-                </tr>
-                <tr>
-                    <td style="color: gray;">&emsp;&emsp;có nhiều kinh nghiệm trong việc dạy học</td>
-                </tr>
-                <tr>
-                    <td style="color: blue;">&emsp;&emsp;- to know something from experience</td>
-                </tr>
-                <tr>
-                    <td style="color: gray;">&emsp;&emsp;do kinh nghiệm mà biết được điều gì</td>
-                </tr>
-            </table>
-            --%>
+            <div class="div-note" id="divNote" runat="server">
+                <a id="btnNote" runat="server" href="Login.aspx">
+                    <span style="font-size: 30px; color: Dodgerblue;">
+                        <i class="fa fa-edit"></i>
+                    </span>
+                </a>
+                
+                <div class="note-content" id="lblNote" runat="server"></div>
+            </div>
             <div id="demo" runat="server"></div>
         </div>
         <%--<div id="demo" runat="server"></div>--%>

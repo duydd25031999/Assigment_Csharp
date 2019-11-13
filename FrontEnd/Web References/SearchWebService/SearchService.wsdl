@@ -100,15 +100,36 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="setNoteToTerm">
+      <s:element name="getTermByStringWithUser">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="note" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="setNoteToTermResponse">
-        <s:complexType />
+      <s:element name="getTermByStringWithUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByStringWithUserResult" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByIdWithUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="termid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByIdWithUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByIdWithUserResult" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -142,11 +163,17 @@
   <wsdl:message name="getTermByStringSoapOut">
     <wsdl:part name="parameters" element="tns:getTermByStringResponse" />
   </wsdl:message>
-  <wsdl:message name="setNoteToTermSoapIn">
-    <wsdl:part name="parameters" element="tns:setNoteToTerm" />
+  <wsdl:message name="getTermByStringWithUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByStringWithUser" />
   </wsdl:message>
-  <wsdl:message name="setNoteToTermSoapOut">
-    <wsdl:part name="parameters" element="tns:setNoteToTermResponse" />
+  <wsdl:message name="getTermByStringWithUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByStringWithUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTermByIdWithUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByIdWithUser" />
+  </wsdl:message>
+  <wsdl:message name="getTermByIdWithUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByIdWithUserResponse" />
   </wsdl:message>
   <wsdl:portType name="SearchServiceSoap">
     <wsdl:operation name="HelloWorld">
@@ -169,9 +196,13 @@
       <wsdl:input message="tns:getTermByStringSoapIn" />
       <wsdl:output message="tns:getTermByStringSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="setNoteToTerm">
-      <wsdl:input message="tns:setNoteToTermSoapIn" />
-      <wsdl:output message="tns:setNoteToTermSoapOut" />
+    <wsdl:operation name="getTermByStringWithUser">
+      <wsdl:input message="tns:getTermByStringWithUserSoapIn" />
+      <wsdl:output message="tns:getTermByStringWithUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <wsdl:input message="tns:getTermByIdWithUserSoapIn" />
+      <wsdl:output message="tns:getTermByIdWithUserSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SearchServiceSoap" type="tns:SearchServiceSoap">
@@ -221,8 +252,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="setNoteToTerm">
-      <soap:operation soapAction="http://tempuri.org/setNoteToTerm" style="document" />
+    <wsdl:operation name="getTermByStringWithUser">
+      <soap:operation soapAction="http://tempuri.org/getTermByStringWithUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <soap:operation soapAction="http://tempuri.org/getTermByIdWithUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -278,8 +318,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="setNoteToTerm">
-      <soap12:operation soapAction="http://tempuri.org/setNoteToTerm" style="document" />
+    <wsdl:operation name="getTermByStringWithUser">
+      <soap12:operation soapAction="http://tempuri.org/getTermByStringWithUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <soap12:operation soapAction="http://tempuri.org/getTermByIdWithUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

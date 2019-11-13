@@ -17,6 +17,7 @@ namespace FrontEnd
         {
             ss = new SearchWebService.SearchService();
             getUserInfo();
+            divNote.Visible = false;
         }
 
         protected void getUserInfo()
@@ -55,16 +56,44 @@ namespace FrontEnd
         {
             string input = Request.Form["keyWord"];
             int kindOfDictionary = Int32.Parse(kindOfDic.Value);
-            Uri uri = Request.Url;
             getDefinitions(input, kindOfDictionary);
         }
 
         protected void getDefinitions(string input, int kindOfDictionary)
         {
-            
+            SearchWebService.Term term = null;
+            object userid = Session["userid"];
+            if (userid != null)
+            {
+                term = ss.getTermByStringWithUser(kindOfDictionary, input, Convert.ToInt32(userid));
+                if (term.ID != -1)
+                {
+                    divNote.Visible = true;
+                    getNote(term);
+                }
+            } else
+            {
+                term = ss.getTermByString(kindOfDictionary, input);
+            }
+            showDefinition(term);
+        }
 
-            SearchWebService.Term term = ss.getTermByString(kindOfDictionary, input);
-            SearchWebService.Definition[] defs = ss.getListDefByString(kindOfDictionary, input);
+        
+
+        protected void getNote(SearchWebService.Term term)
+        {
+            btnNote.HRef = "TermEdit.aspx?term=" + term.ID;
+            if(term.Note.Length == 0)
+            {
+                lblNote.Visible = false;
+            }
+            lblNote.InnerText = term.Note;
+           
+            
+        }
+
+        protected void showDefinition(SearchWebService.Term term)
+        {
             var html = "";
             html += "<table>";
             foreach (SearchWebService.Definition d in term.Definitions)
@@ -100,9 +129,6 @@ namespace FrontEnd
             }
             html += "</table>";
             demo.InnerHtml = html;
-
-            kindOfDic.SelectedIndex = kindOfDictionary - 1;
         }
-
     }
 }

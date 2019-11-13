@@ -11,6 +11,7 @@ namespace Entity
         int _dictionaryId;
         string _content;
         List<Definition> _listDef;
+        string _note;
         public Term()
         {
             _listDef = new List<Definition>();
@@ -36,6 +37,29 @@ namespace Entity
         {
             get { return _content; }
             set { _content = value; }
+        }
+
+        public string Note
+        {
+            get
+            {
+                return _note;
+            }
+            set
+            {
+                _note = value;
+            }
+        }
+        public List<Definition> Definitions
+        {
+            get
+            {
+                return _listDef;
+            }
+            set
+            {
+                _listDef = value;
+            }
         }
     }
 }

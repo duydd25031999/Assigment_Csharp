@@ -67,6 +67,8 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="DictionaryID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Definitions" type="tns:ArrayOfDefinition" />
         </s:sequence>
       </s:complexType>
       <s:element name="getListDefByTerm">
@@ -80,6 +82,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getListDefByTermResult" type="tns:ArrayOfDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByStringResult" type="tns:Term" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -119,6 +136,12 @@
   <wsdl:message name="getListDefByTermSoapOut">
     <wsdl:part name="parameters" element="tns:getListDefByTermResponse" />
   </wsdl:message>
+  <wsdl:message name="getTermByStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByString" />
+  </wsdl:message>
+  <wsdl:message name="getTermByStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByStringResponse" />
+  </wsdl:message>
   <wsdl:message name="setNoteToTermSoapIn">
     <wsdl:part name="parameters" element="tns:setNoteToTerm" />
   </wsdl:message>
@@ -141,6 +164,10 @@
     <wsdl:operation name="getListDefByTerm">
       <wsdl:input message="tns:getListDefByTermSoapIn" />
       <wsdl:output message="tns:getListDefByTermSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <wsdl:input message="tns:getTermByStringSoapIn" />
+      <wsdl:output message="tns:getTermByStringSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="setNoteToTerm">
       <wsdl:input message="tns:setNoteToTermSoapIn" />
@@ -178,6 +205,15 @@
     </wsdl:operation>
     <wsdl:operation name="getListDefByTerm">
       <soap:operation soapAction="http://tempuri.org/getListDefByTerm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <soap:operation soapAction="http://tempuri.org/getTermByString" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -226,6 +262,15 @@
     </wsdl:operation>
     <wsdl:operation name="getListDefByTerm">
       <soap12:operation soapAction="http://tempuri.org/getListDefByTerm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <soap12:operation soapAction="http://tempuri.org/getTermByString" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

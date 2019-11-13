@@ -24,11 +24,11 @@ namespace FrontEnd
             
             int kindOfDictionary = Int32.Parse(kindOfDic.Value);
 
-          
+            SearchWebService.Term term = ss.getTermByString(kindOfDictionary, input);
             SearchWebService.Definition[] defs = ss.getListDefByString(kindOfDictionary, input);
             var html = "";
             html += "<table>";
-            foreach (SearchWebService.Definition d in defs)
+            foreach (SearchWebService.Definition d in term.Definitions)
             {
                 html += "<tr>";
                 if (d.Type == "word-class")

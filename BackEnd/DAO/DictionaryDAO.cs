@@ -98,7 +98,33 @@ namespace BackEnd.DAO
                 list.Add(def);
             }
             contr.Close();
+            term.Definitions = list;
             return list;
+        }
+
+        public Term getTermByString(int dicID, string search)
+        {
+            //get top 5 term contains user input
+            Term term = null;
+            string sql = "select top (5) * from term where content like N'" + search + "' and dictionaryid = " + dicID;
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(sql, contr);
+            contr.Open();
+            //Read data form SQL and add to list
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                term = new Term();
+                term.ID = (int)dr["id"];
+                term.Content = (string)dr["content"];
+                term.DictionaryID = (int)dr["dictionaryid"];
+            }
+            contr.Close();
+            if(term != null)
+            {
+                getDefinitionByTerm(term);
+            }
+            return term;
         }
     }
 }

@@ -52,6 +52,12 @@ namespace BackEnd.Service
         }
 
         [WebMethod]
+        public Term getTermByString(int dicID, string search)
+        {
+            return dictionaryDAO.getTermByString(dicID, search);
+        }
+
+        [WebMethod]
         public void setNoteToTerm(string note)
         {
 

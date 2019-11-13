@@ -14,7 +14,9 @@ namespace Entity
         string _note;
         public Term()
         {
+            _id = -1;
             _listDef = new List<Definition>();
+            _note = "";
         }
         public Term(int id, int dictionaryId, string content)
         {

@@ -105,7 +105,7 @@ namespace BackEnd.DAO
         public Term getTermByString(int dicID, string search)
         {
             //get top 5 term contains user input
-            Term term = null;
+            Term term = new Term();
             string sql = "select top (5) * from term where content like N'" + search + "' and dictionaryid = " + dicID;
             SqlConnection contr = new SqlConnection(conn);
             SqlCommand da = new SqlCommand(sql, contr);
@@ -114,13 +114,12 @@ namespace BackEnd.DAO
             SqlDataReader dr = da.ExecuteReader();
             while (dr.Read())
             {
-                term = new Term();
                 term.ID = (int)dr["id"];
                 term.Content = (string)dr["content"];
                 term.DictionaryID = (int)dr["dictionaryid"];
             }
             contr.Close();
-            if(term != null)
+            if(term.ID != -1)
             {
                 getDefinitionByTerm(term);
             }

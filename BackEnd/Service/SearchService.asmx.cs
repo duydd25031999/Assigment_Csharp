@@ -17,6 +17,7 @@ namespace BackEnd.Service
     public class SearchService : System.Web.Services.WebService
     {
         DictionaryDAO dictionaryDAO = new DictionaryDAO();
+        NoteDAO noteDAO = new NoteDAO();
         [WebMethod]
         public string HelloWorld()
         {
@@ -54,13 +55,16 @@ namespace BackEnd.Service
         [WebMethod]
         public Term getTermByString(int dicID, string search)
         {
-            return dictionaryDAO.getTermByString(dicID, search);
+            Term term = dictionaryDAO.getTermByString(dicID, search);
+            return term;
         }
 
         [WebMethod]
-        public void setNoteToTerm(string note)
+        public Term getTermByStringWithUser(int dicID, string search, int userid)
         {
-
+            Term term = dictionaryDAO.getTermByString(dicID, search);
+            noteDAO.getNoteByTerm(term, userid);
+            return term;
         }
 
         string processSearchInput(string input)

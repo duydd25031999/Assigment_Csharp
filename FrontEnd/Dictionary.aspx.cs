@@ -25,11 +25,12 @@ namespace FrontEnd
             if(userid != null)
             {
                 string username = (string)Session["username"];
+                lblUsername.Visible = true;
                 lblUsername.InnerText = "Hello " + username;
                 btnUserChange.InnerText = "Logout";
             } else
             {
-                lblUsername.InnerText = "";
+                lblUsername.Visible = false;
                 btnUserChange.InnerText = "Login";
             }
             
@@ -45,7 +46,7 @@ namespace FrontEnd
             {
                 Session.Remove("userid");
                 Session.Remove("username");
-                lblUsername.InnerText = "";
+                lblUsername.Visible = false;
                 btnUserChange.InnerText = "Login";
             }
         }
@@ -53,8 +54,14 @@ namespace FrontEnd
         protected void Search(object sender, EventArgs e)
         {
             string input = Request.Form["keyWord"];
-            
             int kindOfDictionary = Int32.Parse(kindOfDic.Value);
+            Uri uri = Request.Url;
+            getDefinitions(input, kindOfDictionary);
+        }
+
+        protected void getDefinitions(string input, int kindOfDictionary)
+        {
+            
 
             SearchWebService.Term term = ss.getTermByString(kindOfDictionary, input);
             SearchWebService.Definition[] defs = ss.getListDefByString(kindOfDictionary, input);
@@ -94,8 +101,7 @@ namespace FrontEnd
             html += "</table>";
             demo.InnerHtml = html;
 
-            kindOfDic.SelectedIndex = kindOfDictionary-1;
-
+            kindOfDic.SelectedIndex = kindOfDictionary - 1;
         }
 
     }

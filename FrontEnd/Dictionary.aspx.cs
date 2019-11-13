@@ -16,6 +16,38 @@ namespace FrontEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             ss = new SearchWebService.SearchService();
+            getUserInfo();
+        }
+
+        protected void getUserInfo()
+        {
+            object userid = Session["userid"];
+            if(userid != null)
+            {
+                string username = (string)Session["username"];
+                lblUsername.InnerText = "Hello " + username;
+                btnUserChange.InnerText = "Logout";
+            } else
+            {
+                lblUsername.InnerText = "";
+                btnUserChange.InnerText = "Login";
+            }
+            
+        }
+
+        protected void ChangeUser(object sender, EventArgs e)
+        {
+            object userid = Session["userid"];
+            if (userid == null)
+            {
+                Response.Redirect("Login.aspx");
+            } else
+            {
+                Session.Remove("userid");
+                Session.Remove("username");
+                lblUsername.InnerText = "";
+                btnUserChange.InnerText = "Login";
+            }
         }
 
         protected void Search(object sender, EventArgs e)

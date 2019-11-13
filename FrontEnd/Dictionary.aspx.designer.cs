@@ -13,6 +13,24 @@ namespace FrontEnd {
     public partial class Dictionary {
         
         /// <summary>
+        /// btnUserChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnUserChange;
+        
+        /// <summary>
+        /// lblUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lblUsername;
+        
+        /// <summary>
         /// searchForm control.
         /// </summary>
         /// <remarks>

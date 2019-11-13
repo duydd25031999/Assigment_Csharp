@@ -9,51 +9,33 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="container">
-		<div class="login-box">
-			<div class="box-header">
-				<h2>Signup form</h2>
-			</div>
-			<p class="contact">
-                    <label for="name">Name</label>
-                </p>
-                <input id="name" name="name" placeholder="First and last name" required="" tabindex="1" type="text"/>
+        <div class="container">
+		    <div class="login-box">
+			    <div class="box-header">
+				    <h2>Signup form</h2>
+			    </div>
                 <p class="contact">
-                    <label for="email">Email</label>
+                    <label for="txtEmail">Email</label>
                 </p>
-                <input id="email" name="email" placeholder="example@domain.com" required="" type="email"/>
+                <input runat="server" id="txtEmail" name="email" placeholder="example@domain.com" required="" type="text"/>
                 <p class="contact">
-                    <label for="username">Create a username</label>
+                    <label for="txtName">Create a username</label>
                 </p>
-                <input id="username" name="username" placeholder="username" required="" tabindex="2" type="text"/>
+                <input runat="server" id="txtName" name="username" placeholder="username" required="" tabindex="2" type="text"/>
                 <p class="contact">
-                    <label for="password">Create a password</label>
+                    <label for="txtPassword">Create a password</label>
                 </p>
-                <input id="password" name="password" required="" type="text"/>
-                <p class="contact">
-                    <label for="repassword">Confirm your password</label>
-                </p>
-                <input id="repassword" name="password" required="" type="text"/>
+                <input runat="server" id="txtPassword" name="password" required="" type="password"/>
                 
-                <label for="birthday">Birthdate</label>
-                <input type="date" name="bday" min="1930-01-01" max="2019-12-31"/>
-
-                <label for="gender">Gender</label>
-                <select class="select-style gender" name="gender">
-                    <option value="select">i am..</option>
-                    <option value="m">Male</option>
-                    <option value="f">Female</option>
-                    <option value="others">Other</option>
-                </select><br/>
-                <br/>
                 <p class="contact">
-                    <label for="phone">Mobile phone</label>
+                    <label for="txtDob">Create a username</label>
                 </p>
-                <input id="phone" name="phone" placeholder="phone number" required="" type="text"/>
+                <input runat="server" id="txtDob" name="dob" placeholder="dd/mm/yyyy" required="" tabindex="2" type="text"/>
                 <br/>
-                <button type="submit">Sign Up</button>
-		</div>
-	</div>
+                <p class="warning" runat="server" id="pWarning"></p>
+                <button runat="server" id="btnSignup" onserverclick="SignupExcute">Sign Up</button>
+		    </div>
+	    </div>
     </form>
 </body>
 </html>

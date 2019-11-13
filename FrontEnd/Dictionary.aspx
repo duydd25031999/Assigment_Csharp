@@ -115,12 +115,77 @@
         .other {
 
         }
+
+        <%--style header--%>
+        .header {
+            display:flex;
+            flex-direction:row;
+        }
+        .header-left {
+            width: 50%;
+        }
+        .header-right{
+            width: 50%;
+            padding-top : 21.44px;
+      
+        }
+        .header-right * {
+            float: right;
+            height: 60px;
+        }
+
+        #btnUserChange {
+            display: inline-block;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            text-decoration: none;
+            background: #0069ed;
+            color: #ffffff;
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            cursor: pointer;
+            text-align: center;
+            transition: background 250ms ease-in-out, 
+                        transform 150ms ease;
+            border-radius:10px;
+        }
+
+        #btnUserChange:hover,
+        #btnUserChange:focus {
+            background: #0053ba;
+        }
+
+        #btnUserChange:focus {
+            outline: 1px solid #fff;
+            outline-offset: -4px;
+        }
+
+        #btnUserChange:active {
+            transform: scale(0.99);
+        }
+
+        #lblUsername {
+            margin-right: 50px;
+            font-size: 30px;
+            line-height: 60px;
+        }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1><span>DYNAMIC</span> DICTIONARY</h1>
-        <h3 id="head-description">Search in own dictionary</h3>
+        <div class="header">
+            <div class="header-left">
+                <h1><span>DYNAMIC</span> DICTIONARY</h1>
+                <h3 id="head-description">Search in own dictionary</h3>
+            </div>
+            <div class="header-right">
+                <button runat="server" id="btnUserChange" onserverclick="ChangeUser"></button>
+                <a runat="server" id="lblUsername"></a>
+            </div>
+        </div>
+        
 
         <form id="searchForm" runat="server">
             <input type="text" name="keyWord" id="keyword" runat="server" placeholder="Tìm kiếm từ khóa..."/>

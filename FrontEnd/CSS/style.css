@@ -34,6 +34,14 @@ p.small {
     margin-right: 20px;
 }
 
+p.warning {
+	font-size: 0.8em;
+	margin: 0 auto;
+    text-align: left;
+    margin-right: 20px;
+    color: red;
+}
+
 
 /* Layout */
 .container {

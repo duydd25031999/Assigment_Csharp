@@ -32,5 +32,15 @@ namespace FrontEnd.Properties {
                 return ((string)(this["FrontEnd_SearchWebService_SearchService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/Service/UserService.asmx")]
+        public string FrontEnd_UserWebService_UserService {
+            get {
+                return ((string)(this["FrontEnd_UserWebService_UserService"]));
+            }
+        }
     }
 }

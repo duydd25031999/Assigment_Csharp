@@ -66,17 +66,20 @@
     <Content Include="Login.aspx" />
     <Content Include="MyPage.aspx" />
     <Content Include="Signup.aspx" />
-    <None Include="Web References\NoteWebService\NoteService.disco" />
     <Content Include="TermEdit.aspx" />
-    <None Include="Web References\NoteWebService\NoteService.wsdl" />
-    <Content Include="Web References\NoteWebService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <Content Include="Web References\NoteWebService\Note.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\NoteWebService\NoteService.disco" />
     <Content Include="Web References\SearchWebService\Definition.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\SearchWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\NoteWebService\NoteService.wsdl" />
+    <Content Include="Web References\NoteWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -113,6 +116,7 @@
     </Compile>
     <Compile Include="MyPage.aspx.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MyPage.aspx.designer.cs">
       <DependentUpon>MyPage.aspx</DependentUpon>

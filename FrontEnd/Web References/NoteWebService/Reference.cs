@@ -33,6 +33,8 @@ namespace FrontEnd.NoteWebService {
         
         private System.Threading.SendOrPostCallback UpdateNoteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getNoteByUserOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace FrontEnd.NoteWebService {
         
         /// <remarks/>
         public event UpdateNoteCompletedEventHandler UpdateNoteCompleted;
+        
+        /// <remarks/>
+        public event getNoteByUserCompletedEventHandler getNoteByUserCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +143,35 @@ namespace FrontEnd.NoteWebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getNoteByUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Note[] getNoteByUser(int userid) {
+            object[] results = this.Invoke("getNoteByUser", new object[] {
+                        userid});
+            return ((Note[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNoteByUserAsync(int userid) {
+            this.getNoteByUserAsync(userid, null);
+        }
+        
+        /// <remarks/>
+        public void getNoteByUserAsync(int userid, object userState) {
+            if ((this.getNoteByUserOperationCompleted == null)) {
+                this.getNoteByUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNoteByUserOperationCompleted);
+            }
+            this.InvokeAsync("getNoteByUser", new object[] {
+                        userid}, this.getNoteByUserOperationCompleted, userState);
+        }
+        
+        private void OngetNoteByUserOperationCompleted(object arg) {
+            if ((this.getNoteByUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNoteByUserCompleted(this, new getNoteByUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -153,6 +187,63 @@ namespace FrontEnd.NoteWebService {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Note {
+        
+        private int termIDField;
+        
+        private int userIDField;
+        
+        private string contentField;
+        
+        private string termContentField;
+        
+        /// <remarks/>
+        public int TermID {
+            get {
+                return this.termIDField;
+            }
+            set {
+                this.termIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Content {
+            get {
+                return this.contentField;
+            }
+            set {
+                this.contentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TermContent {
+            get {
+                return this.termContentField;
+            }
+            set {
+                this.termContentField = value;
+            }
         }
     }
     
@@ -204,6 +295,32 @@ namespace FrontEnd.NoteWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    public delegate void getNoteByUserCompletedEventHandler(object sender, getNoteByUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNoteByUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNoteByUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Note[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Note[])(this.results[0]));
             }
         }
     }

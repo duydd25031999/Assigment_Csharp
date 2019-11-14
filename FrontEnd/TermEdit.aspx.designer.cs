@@ -67,13 +67,13 @@ namespace FrontEnd {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCancel;
         
         /// <summary>
-        /// txtNote control.
+        /// txtNote2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtNote;
+        protected global::System.Web.UI.WebControls.TextBox txtNote2;
         
         /// <summary>
         /// demo control.

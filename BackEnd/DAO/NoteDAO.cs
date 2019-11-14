@@ -73,5 +73,26 @@ namespace BackEnd.DAO
             cmd.ExecuteNonQuery();
             contr.Close();
         }
+
+        public List<Note> getNoteByUser(int userid)
+        {
+            List<Note> list = new List<Note>();
+            string query = "select termNote.termid, termNote.userid, termNote.note, term.content from termNote inner join term on termNote.termid = term.id where userid = " + userid;
+            SqlConnection contr = new SqlConnection(conn);
+            SqlCommand da = new SqlCommand(query, contr);
+            contr.Open();
+            SqlDataReader dr = da.ExecuteReader();
+            while (dr.Read())
+            {
+                Note note = new Note();
+                note.TermID = (int)dr["termid"];
+                note.UserID = (int)dr["userid"];
+                note.Content = (string)dr["note"];
+                note.TermContent = (string)dr["content"];
+                list.Add(note);
+            }
+            contr.Close();
+            return list;
+        }
     }
 }

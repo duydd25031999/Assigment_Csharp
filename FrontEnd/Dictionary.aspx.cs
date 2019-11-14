@@ -28,6 +28,7 @@ namespace FrontEnd
                 string username = (string)Session["username"];
                 lblUsername.Visible = true;
                 lblUsername.InnerText = "Hello " + username;
+                lblUsername.HRef = "MyPage.aspx";
                 btnUserChange.InnerText = "Logout";
             } else
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using BackEnd.DAO;
+using Entity;
 
 namespace BackEnd.Service
 {
@@ -45,6 +46,12 @@ namespace BackEnd.Service
                 }
             }
             return true;
+        }
+
+        [WebMethod]
+        public List<Note> getNoteByUser(int userid)
+        {
+            return noteDAO.getNoteByUser(userid);
         }
     }
 }

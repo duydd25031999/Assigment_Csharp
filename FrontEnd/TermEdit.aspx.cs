@@ -15,22 +15,36 @@ namespace FrontEnd
         {
             searchService = new SearchWebService.SearchService();
             noteService = new NoteWebService.NoteService();
+            if(IsPostBack)
+            {
+                return;
+            }
             getUserInfo();
             getTerm();
         }
 
         protected void EditNote(object sender, EventArgs e)
         {
-            int userid = (int)Session["userid"];
-            int termid = Convert.ToInt32(Request["term"]);
-            string note = txtNote.Value;
-            noteService.UpdateNote(termid, userid, note);
-            Response.Redirect("Dictionary.aspx");
+            if(txtNote2.Enabled)
+            {
+                int userid = (int)Session["userid"];
+                int termid = Convert.ToInt32(Request["term"]);
+                string note = txtNote2.Text;
+                noteService.UpdateNote(termid, userid, note);
+                txtNote2.Enabled = false;
+                btnCancel.Visible = false;
+            } else
+            {
+                txtNote2.Enabled = true;
+                btnCancel.Visible = true;
+            }
+           
+            //Response.Redirect("Dictionary.aspx");
         }
 
         protected void CancelEdit(object sender, EventArgs e)
         {
-            Response.Redirect("Dictionary.aspx");
+            getTerm();
         }
 
         protected void getUserInfo()
@@ -39,6 +53,7 @@ namespace FrontEnd
             string username = (string)Session["username"];
             lblUsername.Visible = true;
             lblUsername.InnerText = "Hello " + username;
+            lblUsername.HRef = "MyPage.aspx";
             btnUserChange.InnerText = "Logout";
         }
 
@@ -53,6 +68,8 @@ namespace FrontEnd
 
         protected void getTerm()
         {
+            txtNote2.Enabled = false;
+            btnCancel.Visible = false;
             int userid = (int)Session["userid"];
             int termid = Convert.ToInt32(Request["term"]);
             SearchWebService.Term term = searchService.getTermByIdWithUser(termid, userid);
@@ -65,7 +82,8 @@ namespace FrontEnd
 
         protected void getNote(SearchWebService.Term term)
         {
-            txtNote.InnerText = term.Note;
+            //txtNote.InnerText = term.Note;
+            txtNote2.Text = term.Note;
         }
 
         protected void showDefinition(SearchWebService.Term term)

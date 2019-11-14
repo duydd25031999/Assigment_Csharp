@@ -207,6 +207,7 @@
             <div class="header-right">
                 <button runat="server" id="btnUserChange" onserverclick="ChangeUser"></button>
                 <a runat="server" id="lblUsername"></a>
+                <a runat="server" id="lblDictionary" href="Dictionary.aspx">Dictionary</a>
             </div>
         </div>
 

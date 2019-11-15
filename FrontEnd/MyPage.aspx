@@ -7,6 +7,15 @@
     <title>My Page</title>
 
 	<link rel="stylesheet" href="css/style_mypage.css"/>
+    <style>
+        .header-link {
+            text-decoration: none;
+            margin-right: 50px;
+            font-size: 30px;
+            line-height: 60px;
+            
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -16,8 +25,8 @@
             </div>
             <div class="header-right">
                 <button runat="server" id="btnUserChange" onserverclick="ChangeUser"></button>
-                <a runat="server" id="lblUsername"></a>
-                <a runat="server" id="lblDictionary" href="Dictionary.aspx">Dictionary</a>
+                <a runat="server" id="lblUsername" class="header-link" ></a>
+                <a class="header-link"  runat="server" id="lblDictionary" href="Dictionary.aspx">Dictionary</a>
             </div>
         </div>
     <hr />

@@ -172,6 +172,14 @@
             line-height: 60px;
         }
 
+        .header-link {
+            text-decoration: none;
+            margin-right: 50px;
+            font-size: 30px;
+            line-height: 60px;
+            
+        }
+
         .div-note {
             display: flex;
             flex-direction: row;
@@ -206,8 +214,8 @@
             </div>
             <div class="header-right">
                 <button runat="server" id="btnUserChange" onserverclick="ChangeUser"></button>
-                <a runat="server" id="lblUsername"></a>
-                <a runat="server" id="lblDictionary" href="Dictionary.aspx">Dictionary</a>
+                <a class="header-link" runat="server" id="lblUsername"></a>
+                <a class="header-link" runat="server" id="lblDictionary" href="Dictionary.aspx">Dictionary</a>
             </div>
         </div>
 

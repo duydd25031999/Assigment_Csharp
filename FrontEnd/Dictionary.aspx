@@ -195,6 +195,14 @@
             font-size: 16px;
             resize: vertical;
         }
+
+        .header-link {
+            text-decoration: none;
+            margin-right: 50px;
+            font-size: 30px;
+            line-height: 60px;
+            
+        }
     </style>
 </head>
 <body>
@@ -206,7 +214,7 @@
             </div>
             <div class="header-right">
                 <button runat="server" id="btnUserChange" onserverclick="ChangeUser"></button>
-                <a runat="server" id="lblUsername"></a>
+                <a class="header-link" runat="server" id="lblUsername"></a>
             </div>
         </div>
         

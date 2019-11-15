@@ -2,8 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FrontEnd.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="FrontEnd_Backend_DemoService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:59691/DemoService.asmx</Value>
+    <Setting Name="FrontEnd_UserWebService_UserService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:59691/Service/UserService.asmx</Value>
+    </Setting>
+    <Setting Name="FrontEnd_SearchWebService_SearchService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:59691/Service/SearchService.asmx</Value>
+    </Setting>
+    <Setting Name="FrontEnd_NoteWebService_NoteService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:59691/Service/NoteService.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

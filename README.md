@@ -1,6 +1,8 @@
 # Assigment_Csharp
 Dictionary
 
+Đã có database script, mọi người pull về rồi chạy nhé
+
 Có 5 Task :
 1. (Của t) : Tạo project + thiết kế project + kiếm data + support
 2. Front End :
@@ -14,7 +16,7 @@ Có 5 Task :
   - Gọi DAO để lấy data
   - Sử lý….
 4. Database + DAO : Trong backend
-  - Tạo database như bản vẽ
+  - Sử dụng script có sẵn trong repository
   - Tạo class DAO
 5. Load data to database :
   - Do data tải về lưu ở file .txt nên cần có 1 console app để đọc file data và lưu vào database

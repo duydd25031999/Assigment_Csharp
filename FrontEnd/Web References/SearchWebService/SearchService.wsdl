@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListDefByString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListDefByStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListDefByStringResult" type="tns:ArrayOfDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Definition" nillable="true" type="tns:Definition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Definition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TermID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getListSuggestByString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListSuggestByStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListSuggestByStringResult" type="tns:ArrayOfTerm" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTerm">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Term" nillable="true" type="tns:Term" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Term">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DictionaryID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Definitions" type="tns:ArrayOfDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getListDefByTerm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="term" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListDefByTermResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListDefByTermResult" type="tns:ArrayOfDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByStringResult" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByStringWithUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dicID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="search" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByStringWithUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByStringWithUserResult" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByIdWithUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="termid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTermByIdWithUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTermByIdWithUserResult" type="tns:Term" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListDefByStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getListDefByString" />
+  </wsdl:message>
+  <wsdl:message name="getListDefByStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getListDefByStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListSuggestByStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getListSuggestByString" />
+  </wsdl:message>
+  <wsdl:message name="getListSuggestByStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getListSuggestByStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListDefByTermSoapIn">
+    <wsdl:part name="parameters" element="tns:getListDefByTerm" />
+  </wsdl:message>
+  <wsdl:message name="getListDefByTermSoapOut">
+    <wsdl:part name="parameters" element="tns:getListDefByTermResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTermByStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByString" />
+  </wsdl:message>
+  <wsdl:message name="getTermByStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTermByStringWithUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByStringWithUser" />
+  </wsdl:message>
+  <wsdl:message name="getTermByStringWithUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByStringWithUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTermByIdWithUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getTermByIdWithUser" />
+  </wsdl:message>
+  <wsdl:message name="getTermByIdWithUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getTermByIdWithUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SearchServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByString">
+      <wsdl:input message="tns:getListDefByStringSoapIn" />
+      <wsdl:output message="tns:getListDefByStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListSuggestByString">
+      <wsdl:input message="tns:getListSuggestByStringSoapIn" />
+      <wsdl:output message="tns:getListSuggestByStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByTerm">
+      <wsdl:input message="tns:getListDefByTermSoapIn" />
+      <wsdl:output message="tns:getListDefByTermSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <wsdl:input message="tns:getTermByStringSoapIn" />
+      <wsdl:output message="tns:getTermByStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermByStringWithUser">
+      <wsdl:input message="tns:getTermByStringWithUserSoapIn" />
+      <wsdl:output message="tns:getTermByStringWithUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <wsdl:input message="tns:getTermByIdWithUserSoapIn" />
+      <wsdl:output message="tns:getTermByIdWithUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchServiceSoap" type="tns:SearchServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByString">
+      <soap:operation soapAction="http://tempuri.org/getListDefByString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListSuggestByString">
+      <soap:operation soapAction="http://tempuri.org/getListSuggestByString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByTerm">
+      <soap:operation soapAction="http://tempuri.org/getListDefByTerm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <soap:operation soapAction="http://tempuri.org/getTermByString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByStringWithUser">
+      <soap:operation soapAction="http://tempuri.org/getTermByStringWithUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <soap:operation soapAction="http://tempuri.org/getTermByIdWithUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchServiceSoap12" type="tns:SearchServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByString">
+      <soap12:operation soapAction="http://tempuri.org/getListDefByString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListSuggestByString">
+      <soap12:operation soapAction="http://tempuri.org/getListSuggestByString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListDefByTerm">
+      <soap12:operation soapAction="http://tempuri.org/getListDefByTerm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByString">
+      <soap12:operation soapAction="http://tempuri.org/getTermByString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByStringWithUser">
+      <soap12:operation soapAction="http://tempuri.org/getTermByStringWithUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTermByIdWithUser">
+      <soap12:operation soapAction="http://tempuri.org/getTermByIdWithUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchService">
+    <wsdl:port name="SearchServiceSoap" binding="tns:SearchServiceSoap">
+      <soap:address location="http://localhost:59691/Service/SearchService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SearchServiceSoap12" binding="tns:SearchServiceSoap12">
+      <soap12:address location="http://localhost:59691/Service/SearchService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

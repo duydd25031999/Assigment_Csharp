@@ -26,10 +26,30 @@ namespace FrontEnd.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/DemoService.asmx")]
-        public string FrontEnd_Backend_DemoService {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/Service/UserService.asmx")]
+        public string FrontEnd_UserWebService_UserService {
             get {
-                return ((string)(this["FrontEnd_Backend_DemoService"]));
+                return ((string)(this["FrontEnd_UserWebService_UserService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/Service/SearchService.asmx")]
+        public string FrontEnd_SearchWebService_SearchService {
+            get {
+                return ((string)(this["FrontEnd_SearchWebService_SearchService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59691/Service/NoteService.asmx")]
+        public string FrontEnd_NoteWebService_NoteService {
+            get {
+                return ((string)(this["FrontEnd_NoteWebService_NoteService"]));
             }
         }
     }
